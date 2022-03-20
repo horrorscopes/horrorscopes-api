@@ -25,6 +25,7 @@ def get_data(request, body=None):
         
         db = datastore.Client()
         query = db.query(kind='horrorscope')
+        query.add_filter('sanitized', '=', True)
         results = query.fetch()
         fate = ''
         fates = []

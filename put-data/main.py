@@ -40,6 +40,7 @@ def put_data(request, body=None):
             new_horror = datastore.Entity(datastore.Key('horrorscope', get_nonce(), project='my-horrorscopes'))
             new_horror['signs'] = signs
             new_horror['fate'] = fate
+            new_horror['sanitized'] = False
             print(signs)
             db.put(new_horror)
 
