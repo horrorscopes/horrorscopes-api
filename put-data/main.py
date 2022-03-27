@@ -41,6 +41,7 @@ def put_data(request, body=None):
             new_horror['signs'] = signs
             new_horror['fate'] = fate
             new_horror['sanitized'] = False
+            new_horror['reported'] = False
             print(signs)
             db.put(new_horror)
 

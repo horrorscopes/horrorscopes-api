@@ -10,7 +10,6 @@ def get_nonce():
 def sanitize_data():
     pass
     db = datastore.Client()
-    to_be_deleted = []
     query = db.query(kind='horrorscope')
     batch = db.batch()
     batch.begin()
@@ -21,9 +20,26 @@ def sanitize_data():
         batch.put(r)
     batch.commit()
 
+def report_data():
+    pass
+    db = datastore.Client()
+    query = db.query(kind='horrorscope')
+    batch = db.batch()
+    batch.begin()
+    results = query.fetch()
+    for r in results:
+        pass
+        r['reported'] = False
+        batch.put(r)
+    batch.commit()
+
+
 def migrate_data(request=None, body=None):
     pass
     # Add your migrations below. Include a comment with the date, and what its meant to do.
     # Commented functions have already run on the date of the comment
     # 27.03.2022 - adds sanitized column to data
-    sanitize_data()
+    # sanitize_data()
+
+    # 27.03.2022 - adds reported column to data
+    report_data()
