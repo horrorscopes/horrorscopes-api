@@ -1,10 +1,21 @@
 from google.cloud import datastore
-import json
-import random
 import time
 
 bad_words = [
     'hitler',
+    'hilter',
+    'nigger',
+    'niger',
+    'nigga',
+    'cunt',
+    'gangbang',
+    'rape',
+    'hore',
+    'hoar',
+    'nazi',
+    'swastika',
+    'tranny',
+    'whitepower'
 ]
 
 def get_nonce():
