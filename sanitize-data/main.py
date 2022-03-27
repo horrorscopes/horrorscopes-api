@@ -27,6 +27,7 @@ def get_nonce():
 def sanitize_data(request=None, body=None):
     pass
     db = datastore.Client()
+    to_be_deleted = []
     query = db.query(kind='horrorscope')
     batch = db.batch()
     batch.begin()
@@ -36,11 +37,12 @@ def sanitize_data(request=None, body=None):
         pass
         for bad_word in bad_words:
             pass
-            if bad_word in r['fate'].lower():
+            if bad_word in r['fate'].lower() and r.key not in to_be_deleted:
                 pass
                 batch.delete(r.key)
-            else:
-                pass
-                r['sanitized'] = True
-                batch.put(r)
+                to_be_deleted.append(r.key)
+        if r.key not in to_be_deleted:
+            pass
+            r['sanitized'] = True
+            batch.put(r)
     batch.commit()
